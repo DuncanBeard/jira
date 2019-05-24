@@ -500,6 +500,8 @@ class JIRA(object):
             verify = self._options['verify']
             self._session = ResilientSession(timeout=timeout)
             self._session.verify = verify
+            self._session.cert = self._options['client_cert']
+            self._session.cookies = self._options['cookies']
         self._session.headers.update(self._options['headers'])
 
         if 'cookies' in self._options:
